@@ -115,30 +115,15 @@ Then open `http://localhost:8000` in your browser
 ## ✨ Feature Visualization
 
 The system provides unique neural network visualization capabilities:
-- Feature map animations: Shows how the model "sees" facial expressions at different layers
+- Feature map animations: Show how the model "sees" facial expressions at different layers
 - 3D network visualization: Displays the model structure in an interactive three-dimensional way
 - Confidence charts: Presents prediction probabilities for emotion categories through dynamic charts
 
-![Feature Map Visualization](web/images/feature_maps.png)
 
 ## 🌐 Real-time Recognition Demo
 
 The web application uses WebRTC for camera access and TensorFlow.js for model inference. The system adopts a client-side processing strategy, ensuring all facial image analysis is done in the user's browser, enhancing privacy protection.
 
-## 📌 Future Improvements
-
-- Cross-cultural expression analysis: Enhance the model's ability to recognize expressions from different cultural backgrounds
-- Temporal emotion recognition: Use recurrent components to analyze emotion changes in video sequences
-- Model compression: Apply quantization, pruning, and other techniques to create more lightweight models
-- Multi-modal emotion recognition: Combine facial expressions with voice and text sentiment
-- Enhanced explainability: Expand visualization capabilities for more transparent decision processes
-- Progressive Web App: Convert to PWA to enable offline functionality
-
-## 📄 References
-
-- FER-2013 Dataset: https://www.kaggle.com/datasets/msambare/fer2013
-- TensorFlow.js: https://www.tensorflow.org/js
-- Three.js: https://threejs.org/
 
 ## 📝 Acknowledgments
 
