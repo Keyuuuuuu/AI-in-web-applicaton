@@ -1,0 +1,22 @@
+random_seed: 42
+use_mixed_precision: True
+save_dir: ../logs/20250323-215041
+train_dir: fer2013/train
+val_dir: fer2013/valid
+test_dir: fer2013/test
+img_height: 224
+img_width: 224
+batch_size: 128
+num_classes: 7
+class_labels: ['angry', 'disgust', 'fear', 'happy', 'neutral', 'sad', 'surprise']
+learning_rate: 0.0001
+epochs: 30
+dropout_rate1: 0.5
+dropout_rate2: 0.4
+buffer_size: 10000
+prefetch_buffer: -1
+freeze_layers: 100
+rotation_range: 20
+width_shift_range: 0.2
+height_shift_range: 0.2
+horizontal_flip: True

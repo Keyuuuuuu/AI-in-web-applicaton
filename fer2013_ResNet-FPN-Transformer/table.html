@@ -1,0 +1,400 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" viewBox="0 0 900 700">
+  <!-- Definitions for gradients and shadows -->
+  <defs>
+    <!-- Input gradient -->
+    <linearGradient id="inputGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#bae7ff" />
+      <stop offset="100%" stop-color="#69c0ff" />
+    </linearGradient>
+    
+    <!-- ResNet gradient -->
+    <linearGradient id="resnetGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d6e4ff" />
+      <stop offset="100%" stop-color="#85a5ff" />
+    </linearGradient>
+    
+    <!-- FPN gradient -->
+    <linearGradient id="fpnGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#d9f7be" />
+      <stop offset="100%" stop-color="#73d13d" />
+    </linearGradient>
+    
+    <!-- Transformer gradient -->
+    <linearGradient id="transformerGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#efdbff" />
+      <stop offset="100%" stop-color="#b37feb" />
+    </linearGradient>
+    
+    <!-- Aux Head gradient -->
+    <linearGradient id="auxGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe58f" />
+      <stop offset="100%" stop-color="#ffc53d" />
+    </linearGradient>
+    
+    <!-- Main Head gradient -->
+    <linearGradient id="mainHeadGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffd8bf" />
+      <stop offset="100%" stop-color="#ff9c6e" />
+    </linearGradient>
+    
+    <!-- Loss gradient -->
+    <linearGradient id="lossGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffccc7" />
+      <stop offset="100%" stop-color="#ff7875" />
+    </linearGradient>
+    
+    <!-- Output gradient -->
+    <linearGradient id="outputGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#ffe7ba" />
+      <stop offset="100%" stop-color="#ffa940" />
+    </linearGradient>
+    
+    <!-- Shadow filter -->
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="140%">
+      <feDropShadow dx="3" dy="6" stdDeviation="4" flood-opacity="0.3" />
+    </filter>
+    
+    <!-- Arrow marker -->
+    <marker id="arrowhead" markerWidth="10" markerHeight="7" refX="9" refY="3.5" orient="auto">
+      <polygon points="0 0, 10 3.5, 0 7" fill="#333333"/>
+    </marker>
+    
+    <!-- Feature cube pattern -->
+    <pattern id="featurePattern" width="10" height="10" patternUnits="userSpaceOnUse">
+      <rect width="10" height="10" fill="none" stroke="#ffffff" stroke-width="0.5" stroke-opacity="0.3"/>
+    </pattern>
+  </defs>
+  
+  <!-- Background -->
+  <rect width="900" height="700" fill="#ffffff"/>
+  
+  <!-- Title -->
+  <text x="450" y="35" font-family="Arial" font-size="24" font-weight="bold" text-anchor="middle" fill="#333333">FER Hybrid Model 3D Architecture</text>
+  
+  <!-- Input Image Block -->
+  <!-- Cube with 3D effect -->
+  <g transform="translate(60,100)">
+    <!-- Bottom face -->
+    <polygon points="0,15 60,30 120,15 60,0" fill="#69c0ff" stroke="#333333" stroke-width="1"/>
+    <!-- Right face -->
+    <polygon points="120,15 60,30 60,90 120,75" fill="#91d5ff" stroke="#333333" stroke-width="1"/>
+    <!-- Top face -->
+    <polygon points="0,15 60,30 60,90 0,75" fill="#bae7ff" stroke="#333333" stroke-width="1"/>
+    <!-- Front label -->
+    <text x="60" y="55" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">Input</text>
+    <text x="60" y="70" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">48×48×1</text>
+  </g>
+  
+  <!-- Channel Expansion -->
+  <g transform="translate(220,90)">
+    <!-- Bottom face -->
+    <polygon points="0,15 60,30 120,15 60,0" fill="#69c0ff" stroke="#333333" stroke-width="1"/>
+    <!-- Right face -->
+    <polygon points="120,15 60,30 60,90 120,75" fill="#91d5ff" stroke="#333333" stroke-width="1"/>
+    <!-- Top face -->
+    <polygon points="0,15 60,30 60,90 0,75" fill="#bae7ff" stroke="#333333" stroke-width="1"/>
+    <text x="60" y="55" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">Channel</text>
+    <text x="60" y="70" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">Expansion</text>
+    <text x="60" y="85" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">48×48×3</text>
+  </g>
+  
+  <!-- ResNet50 Backbone -->
+  <g transform="translate(380,70)">
+    <!-- Main ResNet Block -->
+    <!-- Bottom face -->
+    <polygon points="0,20 80,40 160,20 80,0" fill="#85a5ff" stroke="#333333" stroke-width="1"/>
+    <!-- Right face -->
+    <polygon points="160,20 80,40 80,140 160,120" fill="#adc6ff" stroke="#333333" stroke-width="1"/>
+    <!-- Top face -->
+    <polygon points="0,20 80,40 80,140 0,120" fill="#d6e4ff" stroke="#333333" stroke-width="1"/>
+    <text x="80" y="85" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">ResNet50</text>
+    <text x="80" y="105" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">Backbone</text>
+  </g>
+  
+  <!-- Feature Maps C2-C5 - Using stacked 3D blocks -->
+  <g transform="translate(580,30)">
+    <!-- C2 -->
+    <g transform="translate(0,0)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#85a5ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#adc6ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d6e4ff" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">C2</text>
+    </g>
+    
+    <!-- C3 -->
+    <g transform="translate(0,60)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#85a5ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#adc6ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d6e4ff" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">C3</text>
+    </g>
+    
+    <!-- C4 -->
+    <g transform="translate(0,120)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#85a5ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#adc6ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d6e4ff" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">C4</text>
+    </g>
+    
+    <!-- C5 -->
+    <g transform="translate(0,180)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#85a5ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#adc6ff" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d6e4ff" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">C5</text>
+    </g>
+  </g>
+  
+  <!-- FPN Block -->
+  <g transform="translate(700,70)">
+    <!-- Main FPN Block -->
+    <!-- Bottom face -->
+    <polygon points="0,20 80,40 160,20 80,0" fill="#73d13d" stroke="#333333" stroke-width="1"/>
+    <!-- Right face -->
+    <polygon points="160,20 80,40 80,140 160,120" fill="#95de64" stroke="#333333" stroke-width="1"/>
+    <!-- Top face -->
+    <polygon points="0,20 80,40 80,140 0,120" fill="#d9f7be" stroke="#333333" stroke-width="1"/>
+    <text x="80" y="85" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">FPN</text>
+    <text x="80" y="105" font-family="Arial" font-size="14" text-anchor="middle" fill="#333333">Feature Pyramid</text>
+  </g>
+  
+  <!-- Feature Maps P2-P5 - Using stacked 3D blocks -->
+  <g transform="translate(750,30)">
+    <!-- P2 -->
+    <g transform="translate(130,0)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#73d13d" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#95de64" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d9f7be" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">P2</text>
+    </g>
+    
+    <!-- P3 -->
+    <g transform="translate(130,60)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#73d13d" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#95de64" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d9f7be" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">P3</text>
+    </g>
+    
+    <!-- P4 -->
+    <g transform="translate(130,120)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#73d13d" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#95de64" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d9f7be" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">P4</text>
+    </g>
+    
+    <!-- P5 -->
+    <g transform="translate(130,180)">
+      <polygon points="0,10 40,20 80,10 40,0" fill="#73d13d" stroke="#333333" stroke-width="1"/>
+      <polygon points="80,10 40,20 40,50 80,40" fill="#95de64" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,10 40,20 40,50 0,40" fill="#d9f7be" stroke="#333333" stroke-width="1"/>
+      <text x="40" y="35" font-family="Arial" font-size="12" font-weight="bold" text-anchor="middle" fill="#333333">P5</text>
+    </g>
+  </g>
+  
+  <!-- Transformer Branch -->
+  <g transform="translate(600,290)">
+    <!-- Stacked transformer blocks with 3D effect -->
+    <!-- Bottom transformer block -->
+    <g>
+      <polygon points="0,15 100,30 200,15 100,0" fill="#b37feb" stroke="#333333" stroke-width="1"/>
+      <polygon points="200,15 100,30 100,60 200,45" fill="#d3adf7" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,15 100,30 100,60 0,45" fill="#efdbff" stroke="#333333" stroke-width="1"/>
+    </g>
+    
+    <!-- Middle transformer block -->
+    <g transform="translate(0,-10)">
+      <polygon points="0,15 100,30 200,15 100,0" fill="#b37feb" stroke="#333333" stroke-width="1"/>
+      <polygon points="200,15 100,30 100,60 200,45" fill="#d3adf7" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,15 100,30 100,60 0,45" fill="#efdbff" stroke="#333333" stroke-width="1"/>
+    </g>
+    
+    <!-- Top transformer block -->
+    <g transform="translate(0,-20)">
+      <polygon points="0,15 100,30 200,15 100,0" fill="#b37feb" stroke="#333333" stroke-width="1"/>
+      <polygon points="200,15 100,30 100,60 200,45" fill="#d3adf7" stroke="#333333" stroke-width="1"/>
+      <polygon points="0,15 100,30 100,60 0,45" fill="#efdbff" stroke="#333333" stroke-width="1"/>
+      <text x="100" y="45" font-family="Arial" font-size="16" font-weight="bold" text-anchor="middle" fill="#333333">Transformer</text>
+    </g>
+    
+    <!-- Transformer features -->
+    <g transform="translate(0,70)">
+      <text x="100" y="0" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">• Add CLS Token</text>
+      <text x="100" y="20" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">• Positional Encoding</text>
+      <text x="100" y="40" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">• Self-Attention</text>
+      <text x="100" y="60" font-family="Arial" font-size="12" text-anchor="middle" fill="#333333">• Feed Forward</text>
+    </g>
+  </g>
+  
+  <!-- CLS Token Extraction -->
+  <g transform="translate(600,420)">
+    <polygon points="0,10 100,20 200,10 100,0" fill="#d3adf7" stroke="#333333" stroke-width="1"/>
+    <polygon points="200,10 100,20 100,40 200,30" fill="#d3adf7" stroke="#333333" stroke-width="1" fill-opacity="0.8"/>
+    <polygon points="0,10 100,20 100,40 0,30" fill="#efdbff" stroke="#333333" stroke-width="1"/>
+    <text x="100" y="30" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">Extract CLS Token</text>
+  </g>
+  
+  <!-- Main Classification Head -->
+  <g transform="translate(600,480)">
+    <polygon points="0,15 100,30 200,15 100,0" fill="#ff9c6e" stroke="#333333" stroke-width="1"/>
+    <polygon points="200,15 100,30 100,90 200,75" fill="#ffbb96" stroke="#333333" stroke-width="1"/>
+    <polygon points="0,15 100,30 100,90 0,75" fill="#ffd8bf" stroke="#333333" stroke-width="1"/>
+    <text x="100" y="35" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">Main Classification Head</text>
+    <text x="100" y="55" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">Dense(512) → Dropout(0.5) →</text>
+    <text x="100" y="70" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">Dense(256) → Dropout(0.3) →</text>
+    <text x="100" y="85" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">Dense(7)</text>
+  </g>
+  
+  <!-- Auxiliary Classification Heads -->
+  <!-- Aux Head 1 (C5) -->
+  <g transform="translate(150,310)">
+    <polygon points="0,12 70,24 140,12 70,0" fill="#ffc53d" stroke="#333333" stroke-width="1"/>
+    <polygon points="140,12 70,24 70,72 140,60" fill="#ffd666" stroke="#333333" stroke-width="1"/>
+    <polygon points="0,12 70,24 70,72 0,60" fill="#ffe58f" stroke="#333333" stroke-width="1"/>
+    <text x="70" y="32" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#333333">Aux Head 1 (C5)</text>
+    <text x="70" y="47" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">GlobalAvgPool →</text>
+    <text x="70" y="59" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(512) → Dropout →</text>
+    <text x="70" y="71" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(7)</text>
+  </g>
+  
+  <!-- Aux Head 2 (P4) -->
+  <g transform="translate(150,390)">
+    <polygon points="0,12 70,24 140,12 70,0" fill="#ffc53d" stroke="#333333" stroke-width="1"/>
+    <polygon points="140,12 70,24 70,72 140,60" fill="#ffd666" stroke="#333333" stroke-width="1"/>
+    <polygon points="0,12 70,24 70,72 0,60" fill="#ffe58f" stroke="#333333" stroke-width="1"/>
+    <text x="70" y="32" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#333333">Aux Head 2 (P4)</text>
+    <text x="70" y="47" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">GlobalAvgPool →</text>
+    <text x="70" y="59" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(256) → Dropout →</text>
+    <text x="70" y="71" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(7)</text>
+  </g>
+  
+  <!-- Aux Head 3 (P3) -->
+  <g transform="translate(150,470)">
+    <polygon points="0,12 70,24 140,12 70,0" fill="#ffc53d" stroke="#333333" stroke-width="1"/>
+    <polygon points="140,12 70,24 70,72 140,60" fill="#ffd666" stroke="#333333" stroke-width="1"/>
+    <polygon points="0,12 70,24 70,72 0,60" fill="#ffe58f" stroke="#333333" stroke-width="1"/>
+    <text x="70" y="32" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#333333">Aux Head 3 (P3)</text>
+    <text x="70" y="47" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">GlobalAvgPool →</text>
+    <text x="70" y="59" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(256) → Dropout →</text>
+    <text x="70" y="71" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(7)</text>
+  </g>
+  
+  <!-- Aux Head 4 (P2) -->
+  <g transform="translate(150,550)">
+    <polygon points="0,12 70,24 140,12 70,0" fill="#ffc53d" stroke="#333333" stroke-width="1"/>
+    <polygon points="140,12 70,24 70,72 140,60" fill="#ffd666" stroke="#333333" stroke-width="1"/>
+    <polygon points="0,12 70,24 70,72 0,60" fill="#ffe58f" stroke="#333333" stroke-width="1"/>
+    <text x="70" y="32" font-family="Arial" font-size="13" font-weight="bold" text-anchor="middle" fill="#333333">Aux Head 4 (P2)</text>
+    <text x="70" y="47" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">GlobalAvgPool →</text>
+    <text x="70" y="59" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(256) → Dropout →</text>
+    <text x="70" y="71" font-family="Arial" font-size="10" text-anchor="middle" fill="#333333">Dense(7)</text>
+  </g>
+  
+  <!-- Combined Loss -->
+  <g transform="translate(380,480)">
+    <polygon points="0,15 90,30 180,15 90,0" fill="#ff7875" stroke="#333333" stroke-width="1"/>
+    <polygon points="180,15 90,30 90,90 180,75" fill="#ff9c91" stroke="#333333" stroke-width="1"/>
+    <polygon points="0,15 90,30 90,90 0,75" fill="#ffccc7" stroke="#333333" stroke-width="1"/>
+    <text x="90" y="35" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">Combined Loss</text>
+    <text x="90" y="55" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">α * main_loss +</text>
+    <text x="90" y="70" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">β * aux1_loss +</text>
+    <text x="90" y="85" font-family="Arial" font-size="11" text-anchor="middle" fill="#333333">β * (aux2 + aux3 + aux4)_loss</text>
+  </g>
+  
+  <!-- Prediction Output -->
+  <g transform="translate(380,590)">
+    <polygon points="0,12 90,24 180,12 90,0" fill="#ffa940" stroke="#333333" stroke-width="1"/>
+    <polygon points="180,12 90,24 90,48 180,36" fill="#ffc069" stroke="#333333" stroke-width="1"/>
+    <polygon points="0,12 90,24 90,48 0,36" fill="#ffe7ba" stroke="#333333" stroke-width="1"/>
+    <text x="90" y="36" font-family="Arial" font-size="14" font-weight="bold" text-anchor="middle" fill="#333333">7 Emotion Classes</text>
+  </g>
+  
+  <!-- Connections -->
+  <!-- Input to Channel Expansion -->
+  <path d="M180,110 C200,110 200,110 220,110" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Channel Expansion to ResNet -->
+  <path d="M340,110 C360,110 360,110 380,110" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- ResNet to Feature Maps -->
+  <path d="M540,75 C560,75 560,50 580,50" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M540,95 C560,95 560,110 580,110" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M540,120 C560,120 560,170 580,170" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M540,140 C560,140 560,230 580,230" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Feature Maps to FPN -->
+  <path d="M660,50 C680,50 680,75 700,75" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M660,110 C680,110 680,95 700,95" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M660,170 C680,170 680,120 700,120" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M660,230 C680,230 680,140 700,140" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- FPN to P Features -->
+  <path d="M860,50 C880,50 880,50 880,50" stroke="#333333" stroke-width="2" fill="none" stroke-opacity="0"/>
+  <path d="M860,110 C880,110 880,110 880,110" stroke="#333333" stroke-width="2" fill="none" stroke-opacity="0"/>
+  <path d="M860,170 C880,170 880,170 880,170" stroke="#333333" stroke-width="2" fill="none" stroke-opacity="0"/>
+  <path d="M860,230 C880,230 880,230 880,230" stroke="#333333" stroke-width="2" fill="none" stroke-opacity="0"/>
+  
+  <!-- P5 to Transformer -->
+  <path d="M850,230 C850,260 700,260 700,290" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Transformer to CLS -->
+  <path d="M700,370 C700,390 700,400 700,420" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- CLS to Main Head -->
+  <path d="M700,460 C700,465 700,470 700,480" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- C5 to Aux Head 1 -->
+  <path d="M620,230 C620,250 300,250 300,340" stroke="#333333" stroke-width="2" fill="none"/>
+  <path d="M300,340 C300,340 290,340 290,340" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- P4 to Aux Head 2 -->
+  <path d="M880,170 C880,280 320,280 320,420" stroke="#333333" stroke-width="2" fill="none"/>
+  <path d="M320,420 C320,420 290,420 290,420" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- P3 to Aux Head 3 -->
+  <path d="M880,110 C880,300 340,300 340,500" stroke="#333333" stroke-width="2" fill="none"/>
+  <path d="M340,500 C340,500 290,500 290,500" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- P2 to Aux Head 4 -->
+  <path d="M880,50 C880,320 360,320 360,580" stroke="#333333" stroke-width="2" fill="none"/>
+  <path d="M360,580 C360,580 290,580 290,580" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- All heads to Combined Loss -->
+  <!-- Main head to loss -->
+  <path d="M600,525 C560,525 530,525 470,525" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Aux heads to loss -->
+  <path d="M290,340 C290,380 320,380 320,460" stroke="#333333" stroke-width="2" fill="none"/>
+  <path d="M290,420 C290,430 330,430 330,470" stroke="#333333" stroke-width="2" fill="none"/>
+  <path d="M290,500 C290,500 330,500 330,500" stroke="#333333" stroke-width="2" fill="none"/>
+  <path d="M290,580 C290,550 330,550 330,530" stroke="#333333" stroke-width="2" fill="none"/>
+  
+  <path d="M330,460 C330,460 330,510 380,510" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M330,470 C330,470 330,520 380,520" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M330,500 C330,500 350,525 380,525" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  <path d="M330,530 C330,530 330,530 380,530" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Combined Loss to Output -->
+  <path d="M470,570 C470,580 470,580 470,590" stroke="#333333" stroke-width="2" fill="none" marker-end="url(#arrowhead)"/>
+  
+  <!-- Legend -->
+  <rect x="60" y="650" width="20" height="15" fill="url(#resnetGradient)" stroke="#333333" stroke-width="1"/>
+  <text x="90" y="662" font-family="Arial" font-size="12">ResNet Backbone</text>
+  
+  <rect x="210" y="650" width="20" height="15" fill="url(#fpnGradient)" stroke="#333333" stroke-width="1"/>
+  <text x="240" y="662" font-family="Arial" font-size="12">FPN</text>
+  
+  <rect x="310" y="650" width="20" height="15" fill="url(#transformerGradient)" stroke="#333333" stroke-width="1"/>
+  <text x="345" y="662" font-family="Arial" font-size="12">Transformer</text>
+  
+  <rect x="420" y="650" width="20" height="15" fill="url(#auxGradient)" stroke="#333333" stroke-width="1"/>
+  <text x="455" y="662" font-family="Arial" font-size="12">Auxiliary Heads</text>
+  
+  <rect x="530" y="650" width="20" height="15" fill="url(#mainHeadGradient)" stroke="#333333" stroke-width="1"/>
+  <text x="570" y="662" font-family="Arial" font-size="12">Main Classifier</text>
+  
+  <rect x="640" y="650" width="20" height="15" fill="url(#lossGradient)" stroke="#333333" stroke-width="1"/>
+  <text x="675" y="662" font-family="Arial" font-size="12">Loss Function</text>
+</svg>
