@@ -133,5 +133,5 @@ The web application uses WebRTC for camera access and TensorFlow.js for model in
 
 ## 📞 Contact
 
-Hu Ming - mitntghu@gmail.com
-Project Link: https://github.com/Keyuuuuuu/AI-in-web-applicaton
+- Hu Ming - mitntghu@gmail.com
+- Project Link: https://github.com/Keyuuuuuu/AI-in-web-applicaton
