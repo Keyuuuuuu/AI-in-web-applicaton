@@ -1,0 +1,221 @@
+/* 全局样式重置和基础设置 */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    line-height: 1.6;
+    color: #333;
+    background-color: #f5f5f5;
+    min-height: 100vh;
+}
+
+.container {
+    max-width: 1000px;
+    /* 减小最大宽度使内容更集中 */
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* 头部样式优化 */
+header {
+    text-align: center;
+    margin-bottom: 40px;
+    padding: 20px 0;
+    border-bottom: 2px solid #eee;
+}
+
+h1 {
+    font-size: 2.5em;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+.language-section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+}
+
+#languageSelect {
+    padding: 8px 12px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+    font-size: 16px;
+    background-color: white;
+    cursor: pointer;
+}
+
+/* 模式选择按钮样式优化 */
+.mode-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    margin: 30px auto;
+    max-width: 500px;
+    /* 限制按钮区域宽度 */
+}
+
+.mode-button {
+    flex: 1;
+    padding: 12px 24px;
+    font-size: 16px;
+    font-weight: 500;
+    border: 2px solid #3498db;
+    border-radius: 6px;
+    background-color: white;
+    color: #3498db;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    min-width: 140px;
+    /* 确保按钮最小宽度 */
+}
+
+.mode-button:hover {
+    background-color: #3498db;
+    color: white;
+    transform: translateY(-2px);
+}
+
+.mode-button.active {
+    background-color: #3498db;
+    color: white;
+}
+
+/* 内容区域样式优化 */
+.content-section {
+    background-color: white;
+    padding: 30px;
+    border-radius: 12px;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    margin: 0 auto 30px;
+    max-width: 800px;
+    /* 限制内容区域宽度 */
+}
+
+/* 上传按钮样式优化 */
+.upload-container {
+    text-align: center;
+    margin: 30px 0;
+}
+
+.upload-button {
+    display: inline-block;
+    padding: 15px 30px;
+    background-color: #3498db;
+    /* 使用统一的主色调 */
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.upload-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 预览容器样式优化 */
+.preview-container {
+    max-width: 400px;
+    margin: 30px auto;
+    text-align: center;
+}
+
+#imagePreview {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* 结果显示区域样式优化 */
+.result-container {
+    margin: 30px auto;
+    padding: 25px;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    max-width: 600px;
+}
+
+/* 摄像头控制按钮样式统一 */
+.control-button {
+    padding: 15px 30px;
+    font-size: 16px;
+    font-weight: 500;
+    border: none;
+    border-radius: 6px;
+    background-color: #3498db;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    min-width: 140px;
+}
+
+.control-button:hover {
+    background-color: #2980b9;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+/* 状态信息样式优化 */
+.status-section {
+    margin: 20px auto;
+    max-width: 600px;
+    text-align: center;
+}
+
+#modelInfo {
+    background-color: #fff;
+    padding: 15px;
+    border-radius: 6px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    display: inline-block;
+}
+
+/* 图表容器样式优化 */
+.confidence-chart {
+    height: 300px;
+    margin: 20px 0;
+    padding: 15px;
+    background-color: white;
+    border-radius: 8px;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* 响应式优化 */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .content-section {
+        padding: 20px;
+    }
+
+    .mode-buttons {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    .mode-button {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .upload-button,
+    .control-button {
+        width: 100%;
+        max-width: 300px;
+    }
+}

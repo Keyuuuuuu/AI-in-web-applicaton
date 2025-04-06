@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Neural Network Visualization</title>
+    <!-- Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/@tensorflow/tfjs"></script>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+    <script src="https://d3js.org/d3.v7.min.js"></script>
+
+    <!-- Three.js Libraries -->
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/build/three.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/controls/OrbitControls.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/renderers/CSS2DRenderer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/postprocessing/EffectComposer.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/postprocessing/RenderPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/postprocessing/UnrealBloomPass.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/shaders/LuminosityHighPassShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/shaders/CopyShader.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/three@0.136.0/examples/js/postprocessing/ShaderPass.js"></script>
+
+    <!-- Styles -->
+    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/featureMap.css">
+    <link rel="stylesheet" href="css/networkVis.css">
+</head>
+
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <h1 id="pageTitle" data-i18n="title">Neural Network Visualization</h1>
+            <div class="language-section">
+                <label for="languageSelect" id="languageLabel" data-i18n="languageLabel">Language:</label>
+                <select id="languageSelect">
+                    <option value="en" selected>English</option>
+                    <option value="zh">中文</option>
+                </select>
+            </div>
+        </header>
+
+        <!-- Model Status -->
+        <div class="status-section">
+            <div id="modelInfo">
+                <p id="modelStatus" data-i18n="modelStatus">Model Status: Not Loaded</p>
+            </div>
+            <div id="loading" class="status-message" style="display: none;" data-i18n="loadingModel">
+                Loading model...
+            </div>
+            <div id="errorMessage" class="status-message error" style="display: none;"></div>
+        </div>
+
+        <!-- Mode Buttons -->
+        <div class="mode-buttons">
+            <button id="imageMode" class="mode-button active" data-i18n="imageMode">Image Mode</button>
+            <button id="cameraMode" class="mode-button" data-i18n="cameraMode">Camera Mode</button>
+            <button id="networkMode" class="mode-button" data-i18n="networkMode">Network Structure</button>
+        </div>
+
+        <!-- Main Content -->
+        <main>
+            <!-- Image Section -->
+            <section id="imageSection" class="content-section">
+                <div class="upload-container">
+                    <label for="imageUpload" class="upload-button" data-i18n="chooseFile">Choose File</label>
+                    <input type="file" id="imageUpload" accept="image/*" style="display: none;">
+                </div>
+                <div class="preview-container">
+                    <img id="imagePreview" alt="Image Preview" style="display: none;">
+                </div>
+                <div id="result" class="result-container" style="display: none;">
+                    <div class="result-header">
+                        <h3 data-i18n="predictedExpression">Predicted Expression:</h3>
+                        <div id="predictionTime" class="prediction-time"></div>
+                    </div>
+                    <div id="confidenceList" class="confidence-chart"></div>
+                    <div class="feature-map-container">
+                        <div class="feature-map-header">
+                            <h3 class="feature-map-title" data-i18n="featureMapTitle">Feature Map Visualization</h3>
+                        </div>
+                        <div id="imageFeatureMaps">
+                            <div class="feature-map-loading">
+                                <div class="loading-spinner"></div>
+                                <span data-i18n="featureMapLoading">Loading feature maps...</span>
+                            </div>
+                        </div>
+                        <div class="feature-map-legend">
+                            <div class="legend-item">
+                                <div class="legend-color"
+                                    style="background: linear-gradient(to right, #0000ff, #ff0000);"></div>
+                                <span data-i18n="featureMapLegend">Activation Strength</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Camera Section -->
+            <section id="cameraSection" class="content-section" style="display: none;">
+                <div class="camera-container">
+                    <div class="camera-view">
+                        <video id="video" playsinline style="display: none;"></video>
+                        <canvas id="cameraCanvas"></canvas>
+                    </div>
+                    <div class="camera-controls">
+                        <button id="startCamera" class="control-button" data-i18n="startCamera">Start Camera</button>
+                        <button id="stopCamera" class="control-button" style="display: none;"
+                            data-i18n="stopCamera">Stop Camera</button>
+                    </div>
+                </div>
+                <div id="realtimeResult" class="result-container" style="display: none;">
+                    <div id="realtimeExpression" class="expression-text"></div>
+                    <div id="realtimeConfidence" class="confidence-chart"></div>
+                    <div class="feature-map-container">
+                        <div class="feature-map-header">
+                            <h3 class="feature-map-title" data-i18n="realtimeFeatureMapTitle">Real-time Feature Maps
+                            </h3>
+                        </div>
+                        <div id="realtimeFeatureMaps">
+                            <div class="feature-map-loading">
+                                <div class="loading-spinner"></div>
+                                <span data-i18n="featureMapLoading">Loading feature maps...</span>
+                            </div>
+                        </div>
+                        <div class="feature-map-legend">
+                            <div class="legend-item">
+                                <div class="legend-color"
+                                    style="background: linear-gradient(to right, #0000ff, #ff0000);"></div>
+                                <span data-i18n="featureMapLegend">Activation Strength</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- Network Section -->
+            <section id="networkSection" class="content-section" style="display: none;">
+                <div class="network-header">
+                    <h3 class="network-title" data-i18n="networkTitle">Network Structure Visualization</h3>
+                </div>
+
+                <!-- Three.js Container -->
+                <div id="networkVis" class="network-visualization"></div>
+
+                <!-- Network Info Panel -->
+                <div class="network-info">
+                    <div class="info-content">
+                        <div class="info-header">
+                            <h4 data-i18n="networkInfo">Layer Details</h4>
+                            <button class="close-button" aria-label="Close">×</button>
+                        </div>
+                        <div id="layerInfo" class="layer-info-content">
+                            <!-- Basic Info -->
+                            <div class="info-section basic-info">
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="layerName">Layer Name</span>
+                                    <span class="info-value" id="layer-name"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="layerType">Layer Type</span>
+                                    <span class="info-value" id="layer-type"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="parameters">Parameters</span>
+                                    <span class="info-value" id="layer-params"></span>
+                                </div>
+                            </div>
+
+                            <!-- Conv Config -->
+                            <div class="info-section conv-config">
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="filters">Filters</span>
+                                    <span class="info-value" id="layer-filters"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="kernelSize">Kernel Size</span>
+                                    <span class="info-value" id="layer-kernel-size"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="strides">Strides</span>
+                                    <span class="info-value" id="layer-strides"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="padding">Padding</span>
+                                    <span class="info-value" id="layer-padding"></span>
+                                </div>
+                            </div>
+
+                            <!-- Activation Config -->
+                            <div class="info-section activation-config">
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="activation">Activation Function</span>
+                                    <span class="info-value" id="layer-activation"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="useBias">Use Bias</span>
+                                    <span class="info-value" id="layer-use-bias"></span>
+                                </div>
+                            </div>
+
+                            <!-- Shape Info -->
+                            <div class="info-section shape-info">
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="inputShape">Input Shape</span>
+                                    <span class="info-value" id="layer-input-shape"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="outputShape">Output Shape</span>
+                                    <span class="info-value" id="layer-output-shape"></span>
+                                </div>
+                            </div>
+
+                            <!-- Connection Info -->
+                            <div class="info-section connection-info">
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="inConnections">Input Connections</span>
+                                    <span class="info-value" id="layer-in-connections"></span>
+                                </div>
+                                <div class="info-item">
+                                    <span class="info-label" data-i18n="outConnections">Output Connections</span>
+                                    <span class="info-value" id="layer-out-connections"></span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Loading and Error -->
+                <div class="loading-overlay" style="display: none;">
+                    <div class="loading-spinner"></div>
+                    <div class="loading-text" data-i18n="loadingNetwork">Loading network structure...</div>
+                </div>
+
+                <div class="error-message" style="display: none;">
+                    <div class="error-content">
+                        <p class="error-text"></p>
+                        <button class="retry-button" data-i18n="retry">Retry</button>
+                    </div>
+                </div>
+            </section>
+        </main>
+
+    </div>
+
+    <!-- Scripts -->
+    <script type="module" src="js/featureMap.js"></script>
+    <script type="module" src="js/resnetVis.js"></script>
+    <script type="module" src="js/main.js"></script>
+</body>
+
+</html>

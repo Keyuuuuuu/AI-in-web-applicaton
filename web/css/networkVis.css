@@ -1,0 +1,328 @@
+/* 基础容器样式 */
+#networkVis {
+    position: relative;
+    width: 100%;
+    height: calc(100vh - 100px);
+    margin: 0;
+    padding: 0;
+    background: #ffffff;
+    overflow: hidden;
+    box-sizing: border-box;
+}
+
+/* 画布容器样式 */
+#networkVis canvas {
+    width: 100% !important;
+    height: 100% !important;
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    outline: none;
+    backface-visibility: hidden;
+}
+
+/* 可视化标题样式 */
+.network-visualization-title {
+    font-size: 1.5rem;
+    font-weight: 600;
+    color: #2c3e50;
+    margin-bottom: 20px;
+}
+
+/* UI层样式 */
+.network-ui-layer {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: 100;
+}
+
+.network-ui-layer>* {
+    pointer-events: auto;
+}
+
+/* 节点标签样式 */
+.node-label {
+    background: rgba(255, 255, 255, 0.9);
+    color: #2c3e50;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    font-family: 'Monaco', 'Courier New', monospace;
+    white-space: nowrap;
+    pointer-events: none;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+    border: 1px solid rgba(0, 0, 0, 0.1);
+    transform: translate(-50%, -50%);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+
+/* 控制面板样式 */
+.network-controls {
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: rgba(255, 255, 255, 0.95);
+    padding: 12px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    z-index: 200;
+    display: flex;
+    gap: 8px;
+    pointer-events: auto;
+}
+
+/* 网络信息面板样式 */
+.network-info {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    width: 360px;
+    max-width: calc(100% - 40px);
+    background: rgba(255, 255, 255, 0.98);
+    border-radius: 16px;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.15);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(-10px);
+    transition: all 0.3s ease;
+    display: none;
+}
+
+.network-info.visible {
+    opacity: 1;
+    transform: translateY(0);
+    display: flex;
+    flex-direction: column;
+}
+
+/* 内容容器 */
+.info-content {
+    padding: 24px;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+/* 头部样式 */
+.info-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 25px;
+    padding-bottom: 15px;
+    border-bottom: 2px solid #eee;
+}
+
+.info-header h4 {
+    margin: 0;
+    color: #2c3e50;
+    font-size: 1.3em;
+    font-weight: 600;
+}
+
+/* 关闭按钮 */
+.close-button {
+    background: none;
+    border: none;
+    color: #666;
+    font-size: 24px;
+    cursor: pointer;
+    padding: 0;
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s ease;
+}
+
+.close-button:hover {
+    background: #f0f0f0;
+    color: #333;
+}
+
+/* 信息部分 */
+.info-section {
+    margin-bottom: 20px;
+    padding: 15px;
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 8px;
+}
+
+.info-section:last-child {
+    margin-bottom: 0;
+}
+
+/* 信息项 */
+.info-item {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 8px;
+    padding: 4px 0;
+    line-height: 1.5;
+}
+
+.info-item:last-child {
+    margin-bottom: 0;
+}
+
+.info-label {
+    color: #666;
+    font-weight: 500;
+    flex: 1;
+}
+
+.info-value {
+    color: #2c3e50;
+    font-weight: 600;
+    text-align: right;
+    margin-left: 16px;
+}
+
+/* 形状信息使用等宽字体 */
+.shape-info .info-value {
+    font-family: 'Monaco', 'Courier New', monospace;
+    font-size: 0.9em;
+    background: rgba(0, 0, 0, 0.04);
+    padding: 2px 6px;
+    border-radius: 4px;
+}
+
+/* 层信息内容 */
+.layer-info-content {
+    flex: 1;
+    overflow-y: auto;
+    padding-right: 10px;
+}
+
+/* 滚动条样式 */
+.layer-info-content::-webkit-scrollbar {
+    width: 8px;
+}
+
+.layer-info-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.02);
+    border-radius: 4px;
+}
+
+.layer-info-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 4px;
+}
+
+.layer-info-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.2);
+}
+
+/* 响应式设计优化 */
+@media (max-width: 768px) {
+    #networkVis {
+        width: 100%;
+        height: calc(100vh - 120px);
+        margin: 10px 0;
+        padding: 10px;
+    }
+
+    .network-controls {
+        bottom: 10px;
+        left: 10px;
+        right: 10px;
+        transform: none;
+        width: auto;
+        flex-wrap: wrap;
+        justify-content: center;
+        padding: 8px;
+    }
+
+    .network-info {
+        width: calc(100% - 20px);
+        max-width: none;
+        right: 10px;
+        left: 10px;
+        top: 10px;
+        margin: 0 auto;
+    }
+}
+
+/* 中等屏幕尺寸调整 */
+@media (min-width: 769px) and (max-width: 1024px) {
+    #networkVis {
+        height: calc(100vh - 150px);
+        padding: 15px;
+    }
+}
+
+/* 大屏幕优化 */
+@media (min-width: 1025px) {
+    #networkVis {
+        height: calc(100vh - 180px);
+        padding: 20px;
+        margin: 0 auto;
+    }
+}
+
+/* 添加暗色模式支持 */
+@media (prefers-color-scheme: dark) {
+    #networkVis {
+        background: #1a1a1a;
+    }
+
+    .network-controls,
+    .network-info {
+        background: rgba(30, 30, 30, 0.95);
+        color: #ffffff;
+    }
+
+    .node-label {
+        background: rgba(30, 30, 30, 0.9);
+        color: #ffffff;
+        border-color: rgba(255, 255, 255, 0.1);
+    }
+
+    .info-header h4,
+    .info-value {
+        color: #ffffff;
+    }
+
+    .info-label {
+        color: #aaa;
+    }
+
+    .info-section {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .shape-info .info-value {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .close-button {
+        color: #aaa;
+    }
+
+    .close-button:hover {
+        background: rgba(255, 255, 255, 0.1);
+        color: #fff;
+    }
+
+    .layer-info-content::-webkit-scrollbar-track {
+        background: rgba(255, 255, 255, 0.05);
+    }
+
+    .layer-info-content::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.1);
+    }
+
+    .layer-info-content::-webkit-scrollbar-thumb:hover {
+        background: rgba(255, 255, 255, 0.2);
+    }
+}
